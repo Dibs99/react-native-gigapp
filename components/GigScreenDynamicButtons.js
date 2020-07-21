@@ -30,7 +30,7 @@ function GigScreenDynamicButtons({gig}) {
 
   const sendToDatabase = status => {
     axios
-      .patch('http://10.0.2.2:4000/gigs', {
+      .patch('http://188.166.240.15:4000/gigs', {
         state: status,
         id: gig.id,
       })

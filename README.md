@@ -1,3 +1,6 @@
+This will be an internal tool for music agencies. When dealing with many events and many artists, information can become fragmented. What's on the calendar can be different to what was sent to the artist, and of course details can change before the event. The goal of this app is to have 1 sql database containing all the info. When an artist accepts a booking, their calendar will update with the information, and change if the information changes.
+
+```Javascript
 import React, {useContext} from 'react';
 import {
   SafeAreaView,
@@ -19,8 +22,6 @@ import GigScreenDynamicButtons from './GigScreenDynamicButtons';
 
 function GigScreen({route}) {
   const value = useContext(GlobalContext);
-  const styles = value.styles;
-
   const matchGig = value.gigs.filter(
     matchedGig => matchedGig.gig === route.name,
   );
@@ -51,5 +52,3 @@ function GigScreen({route}) {
     </View>
   );
 }
-
-export default GigScreen;

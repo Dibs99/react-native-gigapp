@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -8,11 +8,14 @@ import {
   StatusBar,
   TouchableOpacity,
 } from 'react-native';
+import {GlobalContext} from '../App';
 
 function Home({navigation}) {
+  const value = useContext(GlobalContext);
+  const style = value.styles;
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>I'm Home, I'm going to render all the indexs</Text>
+      <Text>Hi {value.userName}</Text>
       <View style={style.homeButtonContainer}>
         <TouchableOpacity
           style={style.homeButton}
@@ -24,29 +27,14 @@ function Home({navigation}) {
           onPress={() => navigation.navigate('Booked')}>
           <Text style={style.buttonText}>Booked Gigs</Text>
         </TouchableOpacity>
+        <TouchableOpacity
+          style={style.homeButton}
+          onPress={() => navigation.navigate('Calendar')}>
+          <Text style={style.buttonText}>Calendar</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
 }
 
-const style = StyleSheet.create({
-  homeButtonContainer: {
-    justifyContent: 'space-around',
-    width: '100%',
-    alignItems: 'center',
-    paddingVertical: '3%',
-  },
-  homeButton: {
-    backgroundColor: 'blue',
-    width: '90%',
-    alignItems: 'center',
-    borderRadius: 10,
-    margin: '3%',
-  },
-  buttonText: {
-    fontSize: 30,
-    color: 'white',
-    paddingVertical: 10,
-  },
-});
 export default Home;
